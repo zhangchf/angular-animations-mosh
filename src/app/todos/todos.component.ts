@@ -1,12 +1,27 @@
 import { Component} from '@angular/core';
-import { fade, slide } from 'app/animations';
+import { fade, slide, fadeInAnimation, slideInAnimation, fadeOutAnimation, slideOutAnimation } from 'app/animations';
+import { trigger, useAnimation, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
   animations: [
-    fade, slide
+    trigger('todoAnimation', [
+      transition(':enter', [
+        useAnimation(fadeInAnimation, {
+          params: {
+            duration: '500ms',
+            easing: 'ease-in'
+          }
+        }),
+      ]),
+      transition(':leave', [
+        style({ backgroundColor: 'red'}),
+        animate(1000),
+        useAnimation(slideOutAnimation)
+      ])
+    ])
   ]
 })
 export class TodosComponent {
