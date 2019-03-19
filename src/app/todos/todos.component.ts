@@ -1,23 +1,12 @@
 import { Component} from '@angular/core';
-import { trigger, transition, animate, style, state } from '@angular/animations';
+import { fade, slide } from 'app/animations';
 
 @Component({
   selector: 'todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
   animations: [
-    trigger('fade', [
-
-      state('void', style({ opacity: 0})),
-
-      // :enter is alias for void => *
-      // :leave is alias for * => void
-      // void => *, * => void can be combined into void <=> *
-      transition(':enter, :leave', [
-        animate(2000)
-      ])
-
-    ])
+    fade, slide
   ]
 })
 export class TodosComponent {
