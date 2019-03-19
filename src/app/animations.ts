@@ -1,4 +1,4 @@
-import { trigger, transition, animate, style, state } from '@angular/animations';
+import { trigger, transition, animate, style, state, keyframes } from '@angular/animations';
 
 
 export let fade = trigger('fade', [
@@ -17,6 +17,18 @@ export let slide = trigger('slide', [
         animate(500)
     ]),
     transition(':leave', [
-        animate(500, style({ transform: 'translateX(-100%'})) // define the end style inside the animate function
+        // define the end style inside the animate function
+        animate(500, keyframes([
+            style({
+                offset: .2,
+                opacity: 1,
+                transform: 'translateX(20px)'
+            }),
+            style({
+                offset: 1,
+                opacity: 0,
+                transform: 'translateX(-100%)'
+            })
+        ]))
     ])
 ])
