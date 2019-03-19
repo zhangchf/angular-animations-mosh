@@ -10,11 +10,10 @@ import { trigger, transition, animate, style, state } from '@angular/animations'
 
       state('void', style({ opacity: 0})),
 
-      transition('void => *', [
-        animate(2000)
-      ]),
-
-      transition('* => void', [
+      // :enter is alias for void => *
+      // :leave is alias for * => void
+      // void => *, * => void can be combined into void <=> *
+      transition(':enter, :leave', [
         animate(2000)
       ])
 
