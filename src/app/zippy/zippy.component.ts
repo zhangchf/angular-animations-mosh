@@ -11,7 +11,7 @@ import { trigger, useAnimation, transition, style, animate, query, animateChild,
         height: 0,
         paddingTop: 0,
         paddingBottom: 0,
-        overflow: 'hidden',
+        opacity: 0
       })),
 
       // This state is not necessary as it is the same as the default state.
@@ -22,9 +22,14 @@ import { trigger, useAnimation, transition, style, animate, query, animateChild,
       // })),
 
       transition('collapsed => expanded', [
-        animate('200ms ease-in')
+        animate('200ms ease-in', style({
+          height: '*',
+          paddingTop: '*',
+          paddingBottom: '*'
+        })),
+        animate(200, style({ opacity: '*' }))
       ]),
-      
+
       transition('expanded => collapsed', [
         animate('200ms ease-out')
       ])
